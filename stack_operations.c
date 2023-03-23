@@ -46,35 +46,6 @@ void push(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * check_opvalue - validates the argument/value passed after opcode
- *
- * @line_number: line of the command in bytecode file
- *
- * Return: the integer value.
- */
-int check_opvalue(unsigned int line_number)
-{
-	int num;
-
-	/* args is a global value declared in 'monty.h' */
-	if (args.opvalue != NULL)
-	{
-		num = atoi(args.opvalue);
-		if (num == 0 && args.opvalue[0] != '0')
-		{
-			fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-	}
-	else
-	{
-		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	return (num);
-}
-
-/**
  * pint - prints the value at the top of the stack
  *
  * @stack: double pointer to the head/top of a stack
@@ -127,23 +98,24 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * free_stack - frees all nodes in a stack.
+ * pop - removes the top element of the stack
  *
- * @stack: double pointer to stack.
+ * @stack: double pointer to the head/top of a stack
+ * @line_number: line of the command in bytecode file
  */
-void free_stack(stack_t **stack)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top;
 	stack_t *temp;
 
-	if (stack != NULL)
+	if (stack == NULL || *stack == NULL)
 	{
-		top = *stack;
-		while (top != NULL)
-		{
-			temp = top->next;
-			free(top);
-			top = temp;
-		}
+		fprintf(stderr, "L<%u>: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
 	}
+
+	top = *stack;
+	temp = top->next;
+	free(top);
+	*stack = temp;
 }

@@ -64,9 +64,12 @@ void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number);
 
 /* stack_operations.c */
 void push(stack_t **stack, unsigned int line_number);
-int check_opvalue(unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+
+/* utils.c */
+int check_opvalue(unsigned int line_number);
 void free_stack(stack_t **stack);
 
 #endif /* MONTY_H */

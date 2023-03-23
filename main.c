@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* global variable as declared in 'monty.h' */
+globals_t args = {NULL, NULL};
+
 /**
  * main - main entry point of the program
  *
@@ -14,21 +17,15 @@ int main(int argc, char *argv[])
 {
 	FILE *fp;
 	char *line;
-	int line_count = 0;
-	stack_t *top = NULL;
+	unsigned int line_number = 0;
+	stack_t *stack = NULL;
+	void (*function_pointer)(stack_t **stack, unsigned int line_number);
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
-	top = push(top, 1);
-	top = push(top, 2);
-	top = push(top, 3);
-	top = push(top, 4);
-	pall(top);
-	printf("===============");
 
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
@@ -40,13 +37,22 @@ int main(int argc, char *argv[])
 	line = readline(fp);
 	while (line != NULL)
 	{
-		line_count++;
-		printf("Line %d: %s", line_count, line);
+		line_number++;
+		function_pointer = get_cmd(line);
+		if (function_pointer == NULL)
+		{
+			fprintf(stderr, "L<%d>: unknown instruction <%s>\n",
+					line_number, args.opcode);
+			free(line);
+			free_stack(&stack);
+			fclose(fp);
+			exit(EXIT_FAILURE);
+		}
+		function_pointer(&stack, line_number);
 		free(line);
 		line = readline(fp);
 	}
-
 	fclose(fp);
-	free_stack(top);
+	free_stack(&stack);
 	return (EXIT_SUCCESS);
 }

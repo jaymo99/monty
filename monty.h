@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 
+
 /* DATA STRUCTURES */
 /* =============== */
 
@@ -39,16 +40,32 @@ typedef struct instruction_s
 } instruction_t;
 
 
+/**
+ * struct globals = global variables.
+ * @opcode: the opcode
+ * @oparg: argument value passed to opcode
+ */
+typedef struct globals_s
+{
+	char *opcode;
+	char *opvalue;
+} globals_t;
+
+/* declaration for global variable of type 'globals_t */
+extern globals_t args;
+
 /* FUNCTION PROTOTYPES */
 /* =================== */
 
 /* file_manipulation.c */
 char *readline(FILE *fp);
 int linelen(FILE *fp);
+void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number);
 
-/* stack.c */
-stack_t *push(stack_t *top, int n);
-void pall(stack_t *top);
-void free_stack(stack_t *top);
+/* stack_operations.c */
+void push(stack_t **stack, unsigned int line_number);
+int check_opvalue(unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
 
 #endif /* MONTY_H */

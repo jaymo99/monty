@@ -46,4 +46,9 @@ typedef struct instruction_s
 char *readline(FILE *fp);
 int linelen(FILE *fp);
 
+/* stack.c */
+stack_t *push(stack_t *top, int n);
+void pall(stack_t *top);
+void free_stack(stack_t *top);
+
 #endif /* MONTY_H */

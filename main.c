@@ -15,12 +15,20 @@ int main(int argc, char *argv[])
 	FILE *fp;
 	char *line;
 	int line_count = 0;
+	stack_t *top = NULL;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+
+	top = push(top, 1);
+	top = push(top, 2);
+	top = push(top, 3);
+	top = push(top, 4);
+	pall(top);
+	printf("===============");
 
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
@@ -39,5 +47,6 @@ int main(int argc, char *argv[])
 	}
 
 	fclose(fp);
+	free_stack(top);
 	return (EXIT_SUCCESS);
 }

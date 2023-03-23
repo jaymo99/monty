@@ -1,6 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <stdio.h>
 
 /* DATA STRUCTURES */
 /* =============== */
@@ -38,6 +39,11 @@ typedef struct instruction_s
 } instruction_t;
 
 
+/* FUNCTION PROTOTYPES */
+/* =================== */
 
+/* file_manipulation.c */
+char *readline(FILE *fp);
+int linelen(FILE *fp);
 
 #endif /* MONTY_H */

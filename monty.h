@@ -71,5 +71,6 @@ void pop(stack_t **stack, unsigned int line_number);
 /* utils.c */
 int check_opvalue(unsigned int line_number);
 void free_stack(stack_t **stack);
+void nop(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

@@ -52,3 +52,17 @@ void free_stack(stack_t **stack)
 		}
 	}
 }
+
+/**
+ * nop - This function does nothing. It's a blank opcode
+ *
+ * @stack: double pointer to the head/top of a stack
+ * @line_number: line of the command in bytecode file
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	if (stack || !stack || line_number || !line_number)
+	{
+		return;
+	}
+}

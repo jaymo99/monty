@@ -75,6 +75,34 @@ int check_opvalue(unsigned int line_number)
 }
 
 /**
+ * pint - prints the value at the top of the stack
+ *
+ * @stack: double pointer to the head/top of a stack
+ * @line_number: line of the command in bytecode file
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top;
+
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L<%u>: cannot print null stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	top = *stack;
+	if (top != NULL)
+	{
+		printf("%d\n", top->n);
+	}
+	else
+	{
+		fprintf(stderr, "L<%u>: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
+
+/**
  * pall - print all items in a stack.
  *
  * @stack: double pointer to the head/top of a stack

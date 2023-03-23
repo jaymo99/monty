@@ -107,6 +107,7 @@ void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number)
 	instruction_t cmds[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 

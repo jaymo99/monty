@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 		function_pointer = get_cmd(line);
 		if (function_pointer == NULL)
 		{
-			fprintf(stderr, "L<%d>: unknown instruction <%s>\n",
+			fprintf(stderr, "L%d: unknown instruction %s\n",
 					line_number, args.opcode);
 			free(line);
 			free_stack(&stack);

@@ -19,13 +19,13 @@ int check_opvalue(unsigned int line_number)
 		num = atoi(args.opvalue);
 		if (num == 0 && args.opvalue[0] != '0')
 		{
-			fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
-		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	return (num);

@@ -44,11 +44,17 @@ typedef struct instruction_s
  * struct globals = global variables.
  * @opcode: the opcode
  * @oparg: argument value passed to opcode
+ * @line: current line in open file.
+ * @stack: keeps track of the address of stack.
+ * @fp: file pointer.
  */
 typedef struct globals_s
 {
 	char *opcode;
 	char *opvalue;
+	char *line;
+	char **stack;
+	FILE *fp;
 } globals_t;
 
 /* declaration for global variable of type 'globals_t */
@@ -71,6 +77,7 @@ void pop(stack_t **stack, unsigned int line_number);
 /* utils.c */
 int check_opvalue(unsigned int line_number);
 void free_stack(stack_t **stack);
+void clean_all();
 void nop(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

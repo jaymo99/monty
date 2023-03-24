@@ -17,6 +17,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fprintf(stderr, "Error: address of stack is NULL\n");
+		clean_all();
 		exit(EXIT_FAILURE);
 	}
 	top = *stack;
@@ -26,6 +27,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		clean_all();
 		exit(EXIT_FAILURE);
 	}
 
@@ -58,6 +60,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fprintf(stderr, "L%u: cannot print null stack\n", line_number);
+		clean_all();
 		exit(EXIT_FAILURE);
 	}
 
@@ -69,6 +72,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		clean_all();
 		exit(EXIT_FAILURE);
 	}
 }
@@ -86,6 +90,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fprintf(stderr, "L%u: cannot print null stack\n", line_number);
+		clean_all();
 		exit(EXIT_FAILURE);
 	}
 
@@ -111,6 +116,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		clean_all();
 		exit(EXIT_FAILURE);
 	}
 

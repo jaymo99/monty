@@ -20,12 +20,14 @@ int check_opvalue(unsigned int line_number)
 		if (num == 0 && args.opvalue[0] != '0')
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			clean_all();
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		clean_all();
 		exit(EXIT_FAILURE);
 	}
 	return (num);
@@ -51,6 +53,21 @@ void free_stack(stack_t **stack)
 			top = temp;
 		}
 	}
+}
+
+/**
+ * clean_all - frees current line, stack and closes open file
+ *
+ * Description: cleans up resources before program termination
+ */
+void clean_all()
+{
+	if (args.line != NULL)
+	{
+		free(args.line);
+	}
+	free(args.stack);
+	fclose(args.fp);
 }
 
 /**

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /* global variable as declared in 'monty.h' */
-globals_t args = {NULL, NULL};
+globals_t args = {NULL, NULL, NULL, NULL, NULL};
 
 /**
  * main - main entry point of the program
@@ -43,16 +43,13 @@ int main(int argc, char *argv[])
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n",
 					line_number, args.opcode);
-			free(line);
-			free_stack(&stack);
-			fclose(fp);
+			clean_all();
 			exit(EXIT_FAILURE);
 		}
 		function_pointer(&stack, line_number);
 		free(line);
 		line = readline(fp);
 	}
-	fclose(fp);
-	free_stack(&stack);
+	clean_all();
 	return (EXIT_SUCCESS);
 }

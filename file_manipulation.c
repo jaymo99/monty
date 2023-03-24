@@ -30,13 +30,14 @@ char *readline(FILE *fp)
 		if (line == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
+			clean_all();
 			exit(EXIT_FAILURE);
 		}
 
 		if (fgets(line, len + 1, fp) == NULL)
 		{
 			fprintf(stderr, "readline error: fgets() failed\n");
-			free(line);
+			clean_all();
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -63,6 +64,7 @@ int linelen(FILE *fp)
 	if (pos == -1)
 	{
 		fprintf(stderr, "linelen error: ftell() failed\n");
+		clean_all();
 		exit(EXIT_FAILURE);
 	}
 
@@ -86,6 +88,7 @@ int linelen(FILE *fp)
 	if (fseek(fp, pos, SEEK_SET) != 0)
 	{
 		fprintf(stderr, "readline error: fseek() failed\n");
+		clean_all();
 		exit(EXIT_FAILURE);
 	}
 
@@ -119,6 +122,10 @@ void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number)
 	args.opcode = strtok(str, " \t\n"); /* delimter space, tab or newline */
 	opcode = args.opcode;
 	i = 0;
+	if (opcode == NULL)
+	{
+		return (nop);
+	}
 	while (cmds[i].opcode != NULL)
 	{
 		if (strcmp(opcode, cmds[i].opcode) == 0)

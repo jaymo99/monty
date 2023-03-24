@@ -6,7 +6,7 @@
  * push - inserts element at the top of a stack
  *
  * @stack: double pointer to the head/top of a stack
- * @line_number: line of the command in bytecode file
+ * @line_number: line number of the command in bytecode file
  */
 void push(stack_t **stack, unsigned int line_number)
 {
@@ -51,7 +51,7 @@ void push(stack_t **stack, unsigned int line_number)
  * pint - prints the value at the top of the stack
  *
  * @stack: double pointer to the head/top of a stack
- * @line_number: line of the command in bytecode file
+ * @line_number: line number of the command in bytecode file
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
@@ -81,7 +81,7 @@ void pint(stack_t **stack, unsigned int line_number)
  * pall - print all items in a stack.
  *
  * @stack: double pointer to the head/top of a stack
- * @line_number: line of the command in bytecode file
+ * @line_number: line number of the command in bytecode file
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
@@ -106,7 +106,7 @@ void pall(stack_t **stack, unsigned int line_number)
  * pop - removes the top element of the stack
  *
  * @stack: double pointer to the head/top of a stack
- * @line_number: line of the command in bytecode file
+ * @line_number: line number of the command in bytecode file
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
@@ -124,4 +124,31 @@ void pop(stack_t **stack, unsigned int line_number)
 	temp = top->next;
 	free(top);
 	*stack = temp;
+}
+
+/**
+ * swap - swaps the top two elements of the stack
+ *
+ * @stack: double pointer to the head/top of a stack
+ * @line_number: line number of the command in bytecode file
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top;
+	stack_t *second;
+	int temp;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		clean_all();
+		exit(EXIT_FAILURE);
+	}
+
+	top = *stack;
+	second = top->next;
+
+	temp = top->n;
+	top->n = second->n;
+	second->n = temp;
 }

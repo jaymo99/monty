@@ -76,6 +76,7 @@ void pop(stack_t **stack, unsigned int line_number);
 
 /* utils.c */
 int check_opvalue(unsigned int line_number);
+unsigned int is_integer(char *str);
 void free_stack(stack_t **stack);
 void clean_all(void);
 void nop(stack_t **stack, unsigned int line_number);

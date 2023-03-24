@@ -14,15 +14,9 @@ int check_opvalue(unsigned int line_number)
 	int num;
 
 	/* args is a global value declared in 'monty.h' */
-	if (args.opvalue != NULL)
+	if (args.opvalue != NULL && is_integer(args.opvalue))
 	{
 		num = atoi(args.opvalue);
-		if (num == 0 && args.opvalue[0] != '0')
-		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-			clean_all();
-			exit(EXIT_FAILURE);
-		}
 	}
 	else
 	{
@@ -31,6 +25,37 @@ int check_opvalue(unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	return (num);
+}
+
+/**
+ * is_integer - checks if a string represents a numerical value (integer).
+ *
+ * @str: string representation
+ * Description: the function checks if all characters are digits.
+ * a '-' is allowed only in the first position, to symbolize negative values.
+ *
+ * Return: 1 if the representation is an integer, 0 otherwise.
+ */
+unsigned int is_integer(char *str)
+{
+	unsigned int i = 0;
+
+	while (str != NULL && str[i] != '\0')
+	{
+		if (str[i] == '-' && i == 0)
+		{
+			i++;
+			continue;
+		}
+
+		/* ascii values for '0' to '9' */
+		if (str[i] < 48 || str[i] > 57)
+		{
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }
 
 /**

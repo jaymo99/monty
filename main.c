@@ -48,6 +48,7 @@ int main(int argc, char *argv[])
 			fclose(fp);
 			exit(EXIT_FAILURE);
 		}
+		function_pointer(&stack, line_number);
 		free(line);
 		line = readline(fp);
 	}

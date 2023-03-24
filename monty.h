@@ -53,7 +53,7 @@ typedef struct globals_s
 	char *opcode;
 	char *opvalue;
 	char *line;
-	char **stack;
+	stack_t **stack;
 	FILE *fp;
 } globals_t;
 
@@ -77,7 +77,7 @@ void pop(stack_t **stack, unsigned int line_number);
 /* utils.c */
 int check_opvalue(unsigned int line_number);
 void free_stack(stack_t **stack);
-void clean_all();
+void clean_all(void);
 void nop(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

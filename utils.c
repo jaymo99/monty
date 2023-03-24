@@ -60,14 +60,17 @@ void free_stack(stack_t **stack)
  *
  * Description: cleans up resources before program termination
  */
-void clean_all()
+void clean_all(void)
 {
 	if (args.line != NULL)
 	{
 		free(args.line);
 	}
-	free(args.stack);
-	fclose(args.fp);
+	free_stack(args.stack);
+	if(args.fp != NULL)
+	{
+		fclose(args.fp);
+	}
 }
 
 /**

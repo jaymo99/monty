@@ -67,7 +67,7 @@ void clean_all(void)
 		free(args.line);
 	}
 	free_stack(args.stack);
-	if(args.fp != NULL)
+	if (args.fp != NULL)
 	{
 		fclose(args.fp);
 	}

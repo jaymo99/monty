@@ -50,3 +50,35 @@ void sub(stack_t **stack, unsigned int line_number)
 	second->n -= top->n;
 	pop(stack, line_number);
 }
+
+/**
+ * divide - divides the second top element of the stack by the top element
+ * of the stack.
+ *
+ * @stack: double pointer to the head/top of a stack
+ * @line_number: line number of the command in bytecode file
+ */
+void divide(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top;
+	stack_t *second;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
+		clean_all();
+		exit(EXIT_FAILURE);
+	}
+
+	top = *stack;
+	second = top->next;
+	if (top->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		clean_all();
+		exit(EXIT_FAILURE);
+	}
+
+	second->n /= top->n;
+	pop(stack, line_number);
+}

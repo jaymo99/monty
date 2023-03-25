@@ -80,6 +80,7 @@ void swap(stack_t **stack, unsigned int line_number);
 /* stack_addons.c */
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
+void divide(stack_t **stack, unsigned int line_number);
 
 /* utils.c */
 int check_opvalue(unsigned int line_number);

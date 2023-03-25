@@ -74,6 +74,7 @@ void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"sub", sub},
+		{"div", divide},
 		{"nop", nop},
 		{NULL, NULL}
 	};

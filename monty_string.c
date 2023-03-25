@@ -68,3 +68,44 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	putchar('\n');
 }
+
+/**
+ * rotl - rotates the stack to the top
+ *
+ * @stack: double pointer to the head/top of a stack
+ * @line_number: line number of the command in bytecode file
+ *
+ * Description: the top element of the stack becomes the last one, and the
+ * second top element of the stack becomes the first one.
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top;
+	stack_t *second;
+	stack_t *bottom;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		if (line_number)
+		{
+			return;
+		}
+		return;
+	}
+	top = *stack;
+	second = top->next;
+
+	/* remove top element */
+	top->next = NULL;
+	second->prev = NULL;
+	*stack = second;
+
+	/* attach element at the bottom */
+	bottom = *stack;
+	while (bottom->next != NULL)
+	{
+		bottom = bottom->next;
+	}
+	bottom->next = top;
+	top->prev = bottom;
+}

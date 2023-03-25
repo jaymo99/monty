@@ -3,6 +3,9 @@
 
 #include <stdio.h>
 
+#define STACK 1
+#define QUEUE 2
+
 
 /* DATA STRUCTURES */
 /* =============== */
@@ -42,6 +45,8 @@ typedef struct instruction_s
 
 /**
  * struct globals_s - global variables.
+ *
+ * @flag: Specifies the data representation mode to either STACK or QUEUE
  * @opcode: the opcode
  * @opvalue: argument value passed to opcode
  * @line: current line in open file.
@@ -50,6 +55,7 @@ typedef struct instruction_s
  */
 typedef struct globals_s
 {
+	int flag;
 	char *opcode;
 	char *opvalue;
 	char *line;
@@ -76,6 +82,11 @@ void pint(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+
+/* queue.c */
+void set_queue(stack_t **stack, unsigned int line_number);
+void set_stack(stack_t **stack, unsigned int line_number);
+void add_to_queue(stack_t **queue, stack_t *node, unsigned int line_number);
 
 /* monty_math.c */
 void add(stack_t **stack, unsigned int line_number);

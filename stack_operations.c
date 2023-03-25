@@ -39,11 +39,15 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		*stack = node;
 	}
-	else
+	else if (args.flag == STACK)
 	{
 		top->prev = node;
 		node->next = top;
 		*stack = node;
+	}
+	else if (args.flag == QUEUE)
+	{
+		add_to_queue(stack, node, line_number);
 	}
 }
 

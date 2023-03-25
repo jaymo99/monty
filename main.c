@@ -4,7 +4,7 @@
 #include <string.h>
 
 /* global variable as declared in 'monty.h' */
-globals_t args = {NULL, NULL, NULL, NULL, NULL};
+globals_t args = {STACK, NULL, NULL, NULL, NULL, NULL};
 
 /**
  * main - main entry point of the program
@@ -81,6 +81,8 @@ void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number)
 		{"pstr", pstr},
 		{"rotl", rotl},
 		{"rotr", rotr},
+		{"stack", set_stack},
+		{"queue", set_queue},
 		{"nop", nop},
 		{NULL, NULL}
 	};

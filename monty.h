@@ -75,6 +75,9 @@ void pall(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 
+/* stack_addons.c */
+void add(stack_t **stack, unsigned int line_number);
+
 /* utils.c */
 int check_opvalue(unsigned int line_number);
 unsigned int is_integer(char *str);

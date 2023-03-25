@@ -113,7 +113,7 @@ void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
-		{"add", nop},
+		{"add", add},
 		{"nop", nop},
 		{NULL, NULL}
 	};

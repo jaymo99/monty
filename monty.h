@@ -84,6 +84,9 @@ void divide(stack_t **stack, unsigned int line_number);
 void multiply(stack_t **stack, unsigned int line_number);
 void modulo(stack_t **stack, unsigned int line_number);
 
+/* monty_string.c */
+void pchar(stack_t **stack, unsigned int line_number);
+
 /* utils.c */
 int check_opvalue(unsigned int line_number);
 unsigned int is_integer(char *str);

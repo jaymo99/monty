@@ -78,6 +78,7 @@ void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number)
 		{"mul", multiply},
 		{"mod", modulo},
 		{"pchar", pchar},
+		{"pstr", pstr},
 		{"nop", nop},
 		{NULL, NULL}
 	};

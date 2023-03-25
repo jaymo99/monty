@@ -41,9 +41,9 @@ typedef struct instruction_s
 
 
 /**
- * struct globals = global variables.
+ * struct globals_s - global variables.
  * @opcode: the opcode
- * @oparg: argument value passed to opcode
+ * @opvalue: argument value passed to opcode
  * @line: current line in open file.
  * @stack: keeps track of the address of stack.
  * @fp: file pointer.
@@ -81,6 +81,7 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void divide(stack_t **stack, unsigned int line_number);
+void multiply(stack_t **stack, unsigned int line_number);
 
 /* utils.c */
 int check_opvalue(unsigned int line_number);

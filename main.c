@@ -85,8 +85,9 @@ void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number)
 	args.opcode = strtok(str, " \t\n"); /* delimter space, tab or newline */
 	opcode = args.opcode;
 	i = 0;
-	if (opcode == NULL)
+	if (opcode == NULL || opcode[0] == '#')
 	{
+		/* '#' symbolizes a comment */
 		return (nop);
 	}
 	while (cmds[i].opcode != NULL)

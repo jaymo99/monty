@@ -63,10 +63,12 @@ extern globals_t args;
 /* FUNCTION PROTOTYPES */
 /* =================== */
 
+/* main.c */
+void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number);
+
 /* file_manipulation.c */
 char *readline(FILE *fp);
 int linelen(FILE *fp);
-void (*get_cmd(char *str))(stack_t **stack, unsigned int line_number);
 
 /* stack_operations.c */
 void push(stack_t **stack, unsigned int line_number);
@@ -77,6 +79,7 @@ void swap(stack_t **stack, unsigned int line_number);
 
 /* stack_addons.c */
 void add(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
 
 /* utils.c */
 int check_opvalue(unsigned int line_number);

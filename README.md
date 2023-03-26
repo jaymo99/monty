@@ -90,6 +90,7 @@ Monty byte code files can contain blank lines (empty or made of spaces only, and
 17. `nop` - This opcode doesn't do anything. It's a blank opcode.
 
 
+
 ## Usage
 The code should be compiled this way:
 
@@ -101,12 +102,14 @@ The code should be compiled this way:
 
 
 Create a file with instructions listed line by line and save it with a `.m` extension
+
 Run the compiled program and pass the file. For example:
 
 	./monty example.m
 
 ## Examples
 1. Example 1
+
 	james@ubuntu:~/monty$ cat bytecodes/35.m 
 	push 1
 	push 2
@@ -144,7 +147,9 @@ Run the compiled program and pass the file. For example:
 	0
 	james@ubuntu:~/monty$
 
+
 2. Example 2
+
 	james@ubuntu:~/monty$ cat bytecodes/47.m
 	queue
 	push 1

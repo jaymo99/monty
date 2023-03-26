@@ -1,6 +1,7 @@
 # monty
 The goal of this project is to create an interpreter for Monty ByteCodes files.
 
+
 ## The Monty Language
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
 
@@ -39,6 +40,7 @@ Monty byte code files can contain blank lines (empty or made of spaces only, and
 	pall This is the end of our program. Monty is awesome!$
 	james@ubuntu:~/monty$
 
+
 ## The monty program
 * Usage: `monty file`
 	- where `file` is the path to the file containing Monty byte code
@@ -74,9 +76,9 @@ Monty byte code files can contain blank lines (empty or made of spaces only, and
 12. `pstr` - prints the string starting at the top of the stack (or beginning of queue).
 	- The integer stored in each element is treated as the ascii value of the character to be printed.
 	- The string stops when either:
-		> the stack/queue is over.
-		> the value of the element is 0.
-		> the value of the element is not in the ascii table.
+		+ the stack/queue is over.
+		+ the value of the element is 0.
+		+ the value of the element is not in the ascii table.
 13. `rotl` - rotates the stack/queue to the top.
 	- The top element of the stack/queue becomes the last one.
 	- The second top element becomes the first one.
@@ -87,8 +89,10 @@ Monty byte code files can contain blank lines (empty or made of spaces only, and
 16. `queue` - sets the format of the data to a queue (FIFO).
 17. `nop` - This opcode doesn't do anything. It's a blank opcode.
 
+
 ## Usage
 The code should be compiled this way:
+
 	$ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 
 **NOTE:**
@@ -96,11 +100,13 @@ The code should be compiled this way:
 * All error messages are printed on `stderr`
 
 
-1. Create a file with instructions listed line by line and save it with a `.m` extension
-2. Run the compiled program and pass the file.
+Create a file with instructions listed line by line and save it with a `.m` extension
+Run the compiled program and pass the file. For example:
+
 	./monty example.m
 
 ## Examples
+1. Example 1
 	james@ubuntu:~/monty$ cat bytecodes/35.m 
 	push 1
 	push 2
@@ -138,6 +144,7 @@ The code should be compiled this way:
 	0
 	james@ubuntu:~/monty$
 
+2. Example 2
 	james@ubuntu:~/monty$ cat bytecodes/47.m
 	queue
 	push 1

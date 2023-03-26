@@ -108,6 +108,8 @@ Run the compiled program and pass the file. For example:
 	./monty example.m
 
 ## Examples
+Example 1
+
 	james@ubuntu:~/monty$ cat bytecodes/35.m 
 	push 1
 	push 2
@@ -145,7 +147,7 @@ Run the compiled program and pass the file. For example:
 	0
 	james@ubuntu:~/monty$
 
-=============================================================================
+Example 2
 
 	james@ubuntu:~/monty$ cat bytecodes/47.m
 	queue
